@@ -1,0 +1,98 @@
+---
+title: "HW2 Statistical Computing"
+author: "John Rothen"
+date: "9/12/2020"
+output: pdf_document
+---
+
+## System Settings
+Windows 10, 64bit, Rstudio
+
+
+## Initial Notes
+
+R and Miktex were updated to the most recent versions to avoid any issues.
+
+The repository was then cloned to the local disk using Gitbash command.
+
+$ git clone /repository link/
+
+Rtools was then downloaded, as it is required for many of the packages necessary. The "make" problem was resolved using the following R code:
+```
+writeLines('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', con = "~/.Renviron")
+```
+
+
+
+## Issue 1: package installations,
+
+```{r warning=FALSE}
+#install.packages("bookdown")
+#install.packages("tinytex")
+#install.packages("sloop")
+#install.packages("dplyr")
+#install.packages("sessioninfo")
+#install.packages("lobstr")
+#install.packages("DBI")
+#install.packages("RSQLite")
+#install.packages("jsonlite")
+#install.packages("zeallot")
+#install.packages("dbplyr")
+#install.packages("profvis")
+#install.packages("bench")
+#install.packages("tidyr")
+#install.packages("ggbeeswarm")
+library(bookdown)
+library(sloop)
+library(tinytex)
+library(dplyr)
+library(sessioninfo)
+library(lobstr)
+library(DBI)
+library(base)
+library(RSQLite)
+library(jsonlite)
+library(knitr)
+library(roxygen2)
+library(zeallot)
+library(dbplyr)
+library(profvis)
+library(bench)
+library(tidyr)
+library(ggbeeswarm)
+```
+
+
+# Issue with "emo"
+
+In order to properly display emojis, the dependencies were installed from github.
+
+```{r message=FALSE, warning=FALSE}
+#install.packages("devtools")
+library(devtools)
+#devtools::install_github("hadley/emo")
+#devtools::install_github("hadley/sloop")
+library(emo)
+library(usethis)
+library(sloop)
+```
+
+# Tinytex issues
+
+Installed tinytex so that the book can be compiled correctly.
+
+```{r}
+#install_tinytex()
+#devtools::install_github('yihui/tinytex')
+options(tinytex.verbose=TRUE)
+
+```
+
+# Missing Fonts
+
+Two fonts are necessary in order to compile, these are Inconsolata and AndaleMono. Once these are added to your tinytex, the compilation should work!
+
+```{}
+bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")
+```
+
